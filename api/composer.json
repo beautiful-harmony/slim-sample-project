@@ -18,7 +18,8 @@
         "symfony/cache": "^6.2",
         "ext-redis": "*",
         "doctrine/migrations": "^3.5",
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "php": "~8.2"
     },
     "autoload": {
         "files": [
