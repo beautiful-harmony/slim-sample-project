@@ -8,10 +8,6 @@ on:
     branches:
       - "main"
 
-defaults:
-  run:
-    working-directory: api
-
 jobs:
 
   phpcs:
@@ -27,9 +23,12 @@ jobs:
 
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v2"
-        with: { dependency-versions: "highest" }
+        with:
+          dependency-versions: "highest"
+          working-directory: api
 
       - name: "Run phpcs"
+        working-directory: api
         run: "vendor/bin/phpcs"
 
   static-analysis-psalm:
@@ -45,9 +44,12 @@ jobs:
 
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v2"
-        with: {dependency-versions: "highest"}
+        with:
+          dependency-versions: "highest"
+          working-directory: api
 
       - name: "Run a static analysis with vimeo/psalm"
+        working-directory: api
         run: "vendor/bin/psalm --show-info=false --stats --output-format=github --threads=$(nproc)"
 
   phpunit:
@@ -63,7 +65,10 @@ jobs:
 
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v2"
-        with: { dependency-versions: "highest" }
+        with:
+          dependency-versions: "highest"
+          working-directory: api
 
       - name: "Run phpunit"
+        working-directory: api
         run: "vendor/bin/phpunit"
