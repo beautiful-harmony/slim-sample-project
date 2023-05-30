@@ -1,6 +1,6 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
 
-name: "Build"
+name: "CI"
 
 on:
   pull_request:
@@ -8,32 +8,62 @@ on:
     branches:
       - "main"
 
-jobs:
-  matrix:
-    name: Generate job matrix
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: api
-    outputs:
-      matrix: ${{ steps.matrix.outputs.matrix }}
-    steps:
-      - name: Gather CI configuration
-        id: matrix
-        uses: laminas/laminas-ci-matrix-action@v1
+defaults:
+  run:
+    working-directory: api
 
-  qa:
-    name: QA Checks
-    needs: [matrix]
-    runs-on: ${{ matrix.operatingSystem }}
-    defaults:
-      run:
-        working-directory: api
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
+jobs:
+
+  phpcs:
+    name: "phpcs"
+    runs-on: "ubuntu-22.04"
     steps:
-      - name: ${{ matrix.name }}
-        uses: laminas/laminas-continuous-integration-action@v1
-        with:
-          job: ${{ matrix.job }}
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: { coverage: "none", php-version: "8.2" }
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with: { dependency-versions: "highest" }
+
+      - name: "Run phpcs"
+        run: "vendor/bin/phpcs"
+
+  static-analysis-psalm:
+    name: "Static Analysis with Psalm"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: {coverage: "none", php-version: "8.2"}
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with: {dependency-versions: "highest"}
+
+      - name: "Run a static analysis with vimeo/psalm"
+        run: "vendor/bin/psalm --show-info=false --stats --output-format=github --threads=$(nproc)"
+
+  phpunit:
+    name: "PHPUnit"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: { coverage: "none", php-version: "8.2" }
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with: { dependency-versions: "highest" }
+
+      - name: "Run phpunit"
+        run: "vendor/bin/phpunit"
