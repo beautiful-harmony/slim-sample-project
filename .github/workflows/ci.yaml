@@ -1,0 +1,74 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+name: "CI"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "main"
+
+jobs:
+
+  phpcs:
+    name: "phpcs"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: { coverage: "none", php-version: "8.2" }
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "highest"
+          working-directory: api
+
+      - name: "Run phpcs"
+        working-directory: api
+        run: "vendor/bin/phpcs"
+
+  static-analysis-psalm:
+    name: "Static Analysis with Psalm"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: {coverage: "none", php-version: "8.2"}
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "highest"
+          working-directory: api
+
+      - name: "Run a static analysis with vimeo/psalm"
+        working-directory: api
+        run: "vendor/bin/psalm --show-info=false --stats --output-format=github --threads=$(nproc)"
+
+  phpunit:
+    name: "PHPUnit"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: { coverage: "none", php-version: "8.2" }
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "highest"
+          working-directory: api
+
+      - name: "Run phpunit"
+        working-directory: api
+        run: "vendor/bin/phpunit"
