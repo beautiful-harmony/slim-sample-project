@@ -8,14 +8,13 @@ on:
     branches:
       - "main"
 
-defaults:
-  run:
-    working-directory: api
-
 jobs:
   matrix:
     name: Generate job matrix
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
@@ -27,6 +26,9 @@ jobs:
     name: QA Checks
     needs: [matrix]
     runs-on: ${{ matrix.operatingSystem }}
+    defaults:
+      run:
+        working-directory: api
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
