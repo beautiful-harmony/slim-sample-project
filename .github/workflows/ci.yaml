@@ -15,15 +15,10 @@ jobs:
     runs-on: "ubuntu-22.04"
     steps:
       - uses: "actions/checkout@v3"
-
       - uses: "shivammathur/setup-php@v2"
         with: { coverage: "none", php-version: "8.1" }
-
       - uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "lowest"
-          working-directory: api
-
+        with: {working-directory: api}
       - name: "Run composer-require-checker"
         working-directory: api
         run: "vendor/bin/composer-require-checker"
@@ -33,15 +28,10 @@ jobs:
     runs-on: "ubuntu-22.04"
     steps:
       - uses: "actions/checkout@v3"
-
       - uses: "shivammathur/setup-php@v2"
         with: { coverage: "none", php-version: "8.1" }
-
       - uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
-          working-directory: api
-
+        with: {working-directory: api}
       - name: "Run phpcs"
         working-directory: api
         run: "vendor/bin/phpcs"
@@ -51,16 +41,10 @@ jobs:
     runs-on: "ubuntu-22.04"
     steps:
       - uses: "actions/checkout@v3"
-
       - uses: "shivammathur/setup-php@v2"
         with: {coverage: "none", php-version: "8.1"}
-
-      - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
-          working-directory: api
-
+      - uses: "ramsey/composer-install@v2"
+        with: {working-directory: api}
       - name: "Run a static analysis with vimeo/psalm"
         working-directory: api
         run: "vendor/bin/psalm --show-info=false --stats --output-format=github --threads=$(nproc)"
@@ -70,31 +54,23 @@ jobs:
     runs-on: "ubuntu-22.04"
     steps:
       - uses: "actions/checkout@v3"
-
       - uses: "shivammathur/setup-php@v2"
         with: {coverage: "none", php-version: "8.1"}
-
-      - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
-          working-directory: api
-          run: "vendor/bin/phpstan"
+      - uses: "ramsey/composer-install@v2"
+        with: {working-directory: api}
+      - name: "Run a static analysis with PHPStan"
+        working-directory: api
+        run: "vendor/bin/phpstan"
 
   phpunit:
     name: "PHPUnit"
     runs-on: "ubuntu-22.04"
     steps:
       - uses: "actions/checkout@v3"
-
       - uses: "shivammathur/setup-php@v2"
         with: { coverage: "none", php-version: "8.1" }
-
       - uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: "highest"
-          working-directory: api
-
+        with: {working-directory: api}
       - name: "Run phpunit"
         working-directory: api
         run: "vendor/bin/phpunit"
