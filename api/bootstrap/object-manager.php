@@ -6,8 +6,6 @@ $dotenv->load();
 $container = require __DIR__ . '/../config/dependencies.php';
 assert($container instanceof Psr\Container\ContainerInterface);
 
-\Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('mixin');
-
 $em = $container->get(\Doctrine\ORM\EntityManagerInterface::class);
 assert($em instanceof \Doctrine\ORM\EntityManager);
 
