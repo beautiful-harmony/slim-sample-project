@@ -10,6 +10,27 @@ on:
 
 jobs:
 
+  composer-require-checker:
+    name: "composer-require-checker"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with: { coverage: "none", php-version: "8.1" }
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "lowest"
+          working-directory: api
+
+      - name: "Run composer-require-checker"
+        working-directory: api
+        run: "vendor/bin/composer-require-checker"
+
   phpcs:
     name: "phpcs"
     runs-on: "ubuntu-22.04"
