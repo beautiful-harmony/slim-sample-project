@@ -26,6 +26,10 @@ migrate:
 migrate-prev:
 	docker-compose exec api ./bin/migration migrations:migrate prev -vv
 
+.PHONY: composer-require-checker
+composer-require-checker:
+	docker-compose exec api ./vendor/bin/composer-require-checker
+
 .PHONY: psalm
 psalm:
 	docker-compose exec api ./vendor/bin/psalm
