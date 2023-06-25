@@ -24,6 +24,16 @@ This sample project is oriented toward a little more serious development using [
 - Use this sample on your own risk
 - If you want to use this in a real project, you may improve it as this can have many security or performance issues
 
+
+## Blog
+- this repository is constructed to referred from
+https://www.infiniteloop.co.jp/tech-blog/2023/02/slim-framework-with-docker/
+
+## Setup
+```
+cp api/.env.local api/.env 
+```
+
 ## Running the application
 ```
 docker-compose up -d
