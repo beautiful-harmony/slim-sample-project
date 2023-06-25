@@ -34,6 +34,11 @@ composer-require-checker:
 psalm:
 	docker-compose exec api ./vendor/bin/psalm
 
+.PHONY: phpstan
+phpstan:
+	docker-compose exec api php -d memory_limit=-1 ./vendor/bin/phpstan clear-result-cache
+	docker-compose exec api php -d memory_limit=-1 ./vendor/bin/phpstan
+
 .PHONY: phpcs
 phpcs:
 	docker-compose exec api ./vendor/bin/phpcs --standard=PSR12 --exclude=Generic.Files.LineLength app bin bootstrap config public routes tests

@@ -1,0 +1,20 @@
+parameters:
+	level: 8
+	paths:
+		- app
+		- bin
+		- bootstrap
+		- config
+		- public
+		- routes
+		- tests
+	doctrine:
+		objectManagerLoader: bootstrap/object-manager.php
+#	bootstrapFiles:
+#		- phpstan-bootstrap.php
+
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-doctrine/rules.neon
+
+    - phpstan-baseline.neon
