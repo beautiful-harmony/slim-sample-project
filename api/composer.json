@@ -42,6 +42,8 @@
         "vimeo/psalm": "^5.4",
         "psy/psysh": "@stable",
         "phpunit/phpunit": "^9.5",
-        "maglnet/composer-require-checker": "^4.6"
+        "maglnet/composer-require-checker": "^4.6",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-doctrine": "^1.3"
     }
 }

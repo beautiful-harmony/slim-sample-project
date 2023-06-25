@@ -1,0 +1,166 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method App\\\\Domain\\\\User\\\\UserDto\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Domain/User/UserDto.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\User\\\\UserDto\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Domain/User/UserDto.php
+
+		-
+			message: "#^Method App\\\\Exceptions\\\\BaseException\\:\\:__construct\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/BaseException.php
+
+		-
+			message: "#^Method App\\\\Exceptions\\\\BaseException\\:\\:create\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/BaseException.php
+
+		-
+			message: "#^Method App\\\\Exceptions\\\\BaseException\\:\\:getContext\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/BaseException.php
+
+		-
+			message: "#^Method App\\\\Exceptions\\\\BaseException\\:\\:withContext\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/BaseException.php
+
+		-
+			message: "#^Property App\\\\Exceptions\\\\BaseException\\:\\:\\$context type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/BaseException.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Config\\\\Config\\:\\:__construct\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Config/Config.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Config\\\\Config\\:\\:getArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Config/Config.php
+
+		-
+			message: "#^Property App\\\\Support\\\\Config\\\\Config\\:\\:\\$config with generic class Adbar\\\\Dot does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: app/Support/Config/Config.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Database\\\\QueryInterface\\:\\:findBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Database/QueryInterface.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Database\\\\QueryInterface\\:\\:findBy\\(\\) has parameter \\$orderBy with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Database/QueryInterface.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Database\\\\QueryInterface\\:\\:findOneBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Database/QueryInterface.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Doctrine\\\\Query\\:\\:findBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Doctrine/Query.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Doctrine\\\\Query\\:\\:findBy\\(\\) has parameter \\$orderBy with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Doctrine/Query.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Doctrine\\\\Query\\:\\:findOneBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Doctrine/Query.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Http\\\\JsonResponseFactory\\:\\:createWithSerialize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Http/JsonResponseFactory.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Http\\\\JsonResponseFactory\\:\\:serialize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Http/JsonResponseFactory.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Http\\\\JsonResponseFactory\\:\\:serialize\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: app/Support/Http/JsonResponseFactory.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Redis\\\\RedisManager\\:\\:__call\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Redis/RedisManager.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Redis\\\\RedisManager\\:\\:__construct\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Redis/RedisManager.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Redis\\\\RedisManager\\:\\:connections\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Redis/RedisManager.php
+
+		-
+			message: "#^Method App\\\\Support\\\\Redis\\\\RedisManager\\:\\:parseConnectionConfiguration\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Redis/RedisManager.php
+
+		-
+			message: "#^Property App\\\\Support\\\\Redis\\\\RedisManager\\:\\:\\$config type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Redis/RedisManager.php
+
+		-
+			message: "#^Property App\\\\Support\\\\Redis\\\\RedisManager\\:\\:\\$customCreators type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Support/Redis/RedisManager.php
+
+		-
+			message: "#^Method App\\\\UseCases\\\\User\\\\GetUser\\:\\:execute\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/UseCases/User/GetUser.php
+
+		-
+			message: "#^Method App\\\\UseCases\\\\User\\\\Login\\:\\:execute\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/UseCases/User/Login.php
+
+		-
+			message: "#^Method App\\\\UseCases\\\\User\\\\Register\\:\\:execute\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/UseCases/User/Register.php
+
+		-
+			message: "#^Method Test\\\\Unit\\\\User\\\\Auth\\\\AuthenticationServiceTest\\:\\:userIdProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Unit/Domain/User/Auth/AuthenticationServiceTest.php
+
+		-
+			message: "#^Method Test\\\\Unit\\\\User\\\\Auth\\\\AuthenticationServiceTest\\:\\:userProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Unit/Domain/User/Auth/AuthenticationServiceTest.php
+
+		-
+			message: "#^Method Test\\\\Unit\\\\UserTest\\:\\:invalidNameProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Unit/Domain/User/UserTest.php
+
+		-
+			message: "#^Method Test\\\\Unit\\\\UserTest\\:\\:validNameProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Unit/Domain/User/UserTest.php
+
+		-
+			message: "#^Result of method App\\\\Domain\\\\User\\\\User\\:\\:regenerateAuthToken\\(\\) \\(void\\) is used\\.$#"
+			count: 1
+			path: tests/Unit/Domain/User/UserTest.php
