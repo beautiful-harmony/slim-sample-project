@@ -23,7 +23,9 @@
         "doctrine/dbal": "^3.6",
         "psr/log": "^3.0",
         "illuminate/support": "^9.52",
-        "illuminate/contracts": "^9.52"
+        "illuminate/contracts": "^9.52",
+        "illuminate/collections": "^9.52",
+        "psr/http-message": "^1.1"
     },
     "autoload": {
         "files": [
