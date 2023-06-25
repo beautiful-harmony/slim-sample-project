@@ -14,15 +14,12 @@ jobs:
     name: "composer-require-checker"
     runs-on: "ubuntu-22.04"
     steps:
-      - name: "Checkout code"
-        uses: "actions/checkout@v3"
+      - uses: "actions/checkout@v3"
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
+      - uses: "shivammathur/setup-php@v2"
         with: { coverage: "none", php-version: "8.1" }
 
-      - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "lowest"
           working-directory: api
@@ -35,15 +32,12 @@ jobs:
     name: "phpcs"
     runs-on: "ubuntu-22.04"
     steps:
-      - name: "Checkout code"
-        uses: "actions/checkout@v3"
+      - uses: "actions/checkout@v3"
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
+      - uses: "shivammathur/setup-php@v2"
         with: { coverage: "none", php-version: "8.1" }
 
-      - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "highest"
           working-directory: api
@@ -56,11 +50,9 @@ jobs:
     name: "Static Analysis with Psalm"
     runs-on: "ubuntu-22.04"
     steps:
-      - name: "Checkout code"
-        uses: "actions/checkout@v3"
+      - uses: "actions/checkout@v3"
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
+      - uses: "shivammathur/setup-php@v2"
         with: {coverage: "none", php-version: "8.1"}
 
       - name: "Install dependencies with Composer"
@@ -73,19 +65,32 @@ jobs:
         working-directory: api
         run: "vendor/bin/psalm --show-info=false --stats --output-format=github --threads=$(nproc)"
 
+  static-analysis-phpstan:
+    name: "Static Analysis with PHPStan"
+    runs-on: "ubuntu-22.04"
+    steps:
+      - uses: "actions/checkout@v3"
+
+      - uses: "shivammathur/setup-php@v2"
+        with: {coverage: "none", php-version: "8.1"}
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "highest"
+          working-directory: api
+          run: "vendor/bin/phpstan"
+
   phpunit:
     name: "PHPUnit"
     runs-on: "ubuntu-22.04"
     steps:
-      - name: "Checkout code"
-        uses: "actions/checkout@v3"
+      - uses: "actions/checkout@v3"
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
+      - uses: "shivammathur/setup-php@v2"
         with: { coverage: "none", php-version: "8.1" }
 
-      - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v2"
         with:
           dependency-versions: "highest"
           working-directory: api
